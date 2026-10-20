@@ -1,0 +1,6 @@
+.DS_Store
+/target
+node_modules/
+web/dist/
+*.log
+.screenshot*.png

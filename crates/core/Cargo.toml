@@ -1,0 +1,9 @@
+[package]
+name = "json2obj-core"
+version = "0.1.0"
+edition = "2021"
+description = "Infer TypeScript / Zod models from one or many JSON samples"
+license = "MIT"
+
+[dependencies]
+serde_json = "1"

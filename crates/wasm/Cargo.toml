@@ -1,0 +1,15 @@
+[package]
+name = "json2obj-wasm"
+version = "0.1.0"
+edition = "2021"
+description = "WASM bindings for json2obj"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+json2obj-core = { path = "../core" }
+serde_json = "1"
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"
