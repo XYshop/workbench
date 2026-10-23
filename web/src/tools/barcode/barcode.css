@@ -1,0 +1,457 @@
+.barcode-tool {
+	flex: 1;
+	min-height: 0;
+	display: grid;
+	grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+	gap: 13px;
+}
+
+.barcode-editor,
+.barcode-preview-panel {
+	min-height: 0;
+}
+
+.barcode-form {
+	min-height: 0;
+	overflow: auto;
+	padding: 16px;
+}
+
+.barcode-field,
+.barcode-format-field,
+.range-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.barcode-field-heading,
+.range-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	color: var(--text);
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.text-action {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--accent);
+	font-size: 11px;
+}
+
+.text-action.success {
+	color: var(--accent);
+}
+
+.text-action.error {
+	color: var(--danger);
+}
+
+.text-action:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
+.barcode-input {
+	flex: none;
+	width: 100%;
+	min-height: 100px;
+	max-height: 200px;
+	padding: 11px 12px;
+	border: 1px solid var(--border);
+	border-radius: 9px;
+	outline: 0;
+	resize: vertical;
+	background: var(--control-bg);
+	color: var(--input-text);
+	font-family: var(--mono);
+	font-size: 12px;
+	line-height: 1.6;
+}
+
+.barcode-input:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.barcode-input::placeholder {
+	color: var(--dim);
+}
+
+.barcode-format-field {
+	min-width: 0;
+	margin: 20px 0 0;
+	padding: 0;
+	border: 0;
+}
+
+.barcode-format-field legend {
+	margin-bottom: 8px;
+	color: var(--text);
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.barcode-format-options {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.barcode-format-card {
+	min-width: 0;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+	border: 1px solid var(--border);
+	border-radius: 9px;
+	background: var(--panel-2);
+	color: var(--text);
+	text-align: left;
+	transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.barcode-format-card:hover {
+	border-color: var(--border-strong);
+}
+
+.barcode-format-card.selected {
+	border-color: var(--accent);
+	background: var(--accent-dim);
+	box-shadow: 0 0 0 2px var(--accent-dim);
+}
+
+.barcode-format-card strong,
+.barcode-format-card small {
+	display: block;
+}
+
+.barcode-format-card strong {
+	font-size: 11.5px;
+}
+
+.barcode-format-card small {
+	margin-top: 3px;
+	color: var(--muted);
+	font-size: 10px;
+	font-weight: 400;
+}
+
+.format-symbol {
+	width: 31px;
+	height: 31px;
+	flex: none;
+	display: grid;
+	place-items: center;
+	gap: 2px;
+	border-radius: 7px;
+	background: var(--control-bg);
+}
+
+.format-symbol-qr {
+	grid-template-columns: repeat(3, 6px);
+	grid-template-rows: repeat(3, 6px);
+}
+
+.format-symbol-qr i {
+	width: 6px;
+	height: 6px;
+	background: var(--text);
+}
+
+.format-symbol-qr i:nth-child(2),
+.format-symbol-qr i:nth-child(4),
+.format-symbol-qr i:nth-child(6),
+.format-symbol-qr i:nth-child(8) {
+	background: var(--dim);
+}
+
+.format-symbol-linear {
+	display: flex;
+	justify-content: center;
+	gap: 2px;
+}
+
+.format-symbol-linear i {
+	width: 2px;
+	height: 18px;
+	background: var(--text);
+}
+
+.format-symbol-linear i:nth-child(2n) {
+	width: 1px;
+}
+
+.barcode-settings {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+	margin-top: 20px;
+	padding-top: 17px;
+	border-top: 1px solid var(--border);
+}
+
+.range-title output {
+	color: var(--accent);
+	font-family: var(--mono);
+	font-size: 11px;
+	font-weight: 500;
+}
+
+.range-field input[type="range"] {
+	width: 100%;
+	accent-color: var(--accent);
+}
+
+.range-field small {
+	color: var(--dim);
+	font-size: 10px;
+	font-weight: 400;
+}
+
+.barcode-colors {
+	display: flex;
+	gap: 18px;
+	margin-top: 18px;
+	padding-top: 15px;
+	border-top: 1px solid var(--border);
+}
+
+.color-field {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.color-swatch {
+	width: 30px;
+	height: 30px;
+	position: relative;
+	overflow: hidden;
+	border: 1px solid var(--border-strong);
+	border-radius: 8px;
+}
+
+.color-swatch input {
+	position: absolute;
+	width: 42px;
+	height: 42px;
+	left: -6px;
+	top: -6px;
+	padding: 0;
+	border: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.color-field strong,
+.color-field small {
+	display: block;
+}
+
+.color-field strong {
+	color: var(--text);
+	font-size: 10.5px;
+}
+
+.color-field small {
+	margin-top: 2px;
+	color: var(--muted);
+	font-family: var(--mono);
+	font-size: 9px;
+}
+
+.preview-live {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--muted);
+	font-size: 10px;
+}
+
+.preview-live i,
+.local-pill i {
+	width: 6px;
+	height: 6px;
+	display: inline-block;
+	border-radius: 50%;
+	background: var(--accent);
+}
+
+.barcode-preview-content {
+	flex: 1;
+	min-height: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	padding: 18px;
+}
+
+.barcode-artboard {
+	flex: 1;
+	min-width: 0;
+	min-height: 240px;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+	padding: 24px;
+	border: 1px solid var(--barcode-checker-border);
+	border-radius: 10px;
+	background-color: var(--barcode-checker-bg);
+	background-image: linear-gradient(45deg, var(--barcode-checker-tile) 25%, transparent 25%), linear-gradient(-45deg, var(--barcode-checker-tile) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--barcode-checker-tile) 75%), linear-gradient(-45deg, transparent 75%, var(--barcode-checker-tile) 75%);
+	background-size: 18px 18px;
+	background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+}
+
+.barcode-artboard img {
+	display: block;
+	object-fit: contain;
+}
+
+.qr-artboard img {
+	width: min(100%, 320px);
+	height: min(100%, 320px);
+}
+
+.linear-artboard img {
+	width: min(100%, 620px);
+	height: min(100%, 240px);
+}
+
+.barcode-empty {
+	color: #8994a2;
+	text-align: center;
+}
+
+.barcode-empty span {
+	width: 42px;
+	height: 42px;
+	display: grid;
+	place-items: center;
+	margin: 0 auto 10px;
+	border-radius: 12px;
+	background: #f0f3f7;
+	color: #68768a;
+	font-size: 20px;
+}
+
+.barcode-empty p {
+	margin: 0;
+	font-size: 11px;
+}
+
+.barcode-error {
+	margin: 10px 0 0;
+	color: var(--danger);
+	font-size: 11px;
+	line-height: 1.5;
+}
+
+.barcode-preview-caption {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-top: 12px;
+	color: var(--muted);
+	font-size: 10px;
+}
+
+.format-badge {
+	padding: 4px 7px;
+	border-radius: 5px;
+	background: var(--accent-dim);
+	color: var(--accent);
+	font-family: var(--mono);
+	font-size: 9px;
+	letter-spacing: 0.04em;
+}
+
+.barcode-export-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 13px 15px;
+	border-top: 1px solid var(--border);
+}
+
+.barcode-export-bar strong,
+.barcode-export-bar small {
+	display: block;
+}
+
+.barcode-export-bar strong {
+	color: var(--text);
+	font-size: 11px;
+}
+
+.barcode-export-bar small {
+	margin-top: 3px;
+	color: var(--dim);
+	font-size: 9.5px;
+}
+
+.barcode-export-actions {
+	display: flex;
+	gap: 6px;
+}
+
+@media (max-width: 980px) {
+	.barcode-tool {
+		grid-template-columns: minmax(0, 1fr);
+		min-height: auto;
+	}
+
+	.barcode-editor {
+		min-height: 440px;
+	}
+
+	.barcode-preview-panel {
+		min-height: 500px;
+	}
+}
+
+@media (max-width: 560px) {
+	.barcode-form {
+		padding: 13px;
+	}
+
+	.barcode-format-options,
+	.barcode-settings {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.barcode-settings {
+		gap: 14px;
+	}
+
+	.barcode-preview-content {
+		padding: 12px;
+	}
+
+	.barcode-artboard {
+		min-height: 220px;
+		padding: 12px;
+	}
+
+	.barcode-export-bar {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.barcode-export-actions {
+		width: 100%;
+	}
+
+	.barcode-export-actions button {
+		flex: 1;
+	}
+}
