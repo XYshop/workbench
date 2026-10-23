@@ -17,10 +17,15 @@ pub fn generate(input: &str, root_name: &str, detect_enums: bool) -> Result<Outp
     let deserializer = serde_json::Deserializer::from_str(input);
     let mut root = infer::Ty::Any;
     let mut samples = 0usize;
+    let mut raw_samples = Vec::new();
 
     for value in deserializer.into_iter::<serde_json::Value>() {
         let value = value.map_err(|error| format!("JSON 解析失败：{}", error))?;
         root = infer::merge_ty(root, infer::infer_value(&value));
+        raw_samples.push(
+            serde_json::to_string_pretty(&value)
+                .map_err(|error| format!("JSON 格式化失败：{}", error))?,
+        );
         samples += 1;
     }
 
@@ -34,7 +39,9 @@ pub fn generate(input: &str, root_name: &str, detect_enums: bool) -> Result<Outp
         detect_enums,
     };
 
-    Ok(render::render(&root, samples, &opts))
+    let mut output = render::render(&root, samples, &opts);
+    output.raw = raw_samples.join("\n");
+    Ok(output)
 }
 
 #[cfg(test)]

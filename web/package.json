@@ -6,19 +6,23 @@
   "scripts": {
     "wasm": "wasm-pack build ../crates/wasm --target web --release --out-dir ../../web/src/wasm",
     "dev": "vite",
-    "build": "pnpm wasm && vue-tsc -b && vite build",
-    "build:only": "vue-tsc -b && vite build",
+    "build": "pnpm wasm && tsc -b && vite build",
+    "build:only": "tsc -b && vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "vue": "^3.5.42"
-  },
   "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^24.13.3",
-    "@vitejs/plugin-vue": "^6.0.8",
-    "@vue/tsconfig": "^0.9.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
-    "vite": "^8.3.0",
-    "vue-tsc": "^3.3.11"
+    "vite": "^8.3.0"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   }
 }

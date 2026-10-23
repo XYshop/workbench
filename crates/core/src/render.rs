@@ -16,6 +16,7 @@ pub struct Stats {
 }
 
 pub struct Output {
+    pub raw: String,
     pub typescript: String,
     pub zod: String,
     pub stats: Stats,
@@ -25,6 +26,7 @@ pub fn render(root: &Ty, samples: usize, opts: &RenderOptions) -> Output {
     let (typescript, stats) = render_typescript(root, samples, opts);
     let zod = render_zod(root, samples, opts);
     Output {
+        raw: String::new(),
         typescript,
         zod,
         stats,
