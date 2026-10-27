@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useLayoutEffect, useState } from "react";
-import { toolRegistry, type ToolId } from "./tools/registry";
 import { ThemeContext } from "./theme";
+import { type ToolId, toolRegistry } from "./tools/registry";
 import "./style.css";
 
 type ThemePreference = "system" | "light" | "dark";
@@ -12,7 +12,8 @@ function readThemePreference(): ThemePreference {
 }
 
 function ToolIcon({ icon }: { icon: "json" | "barcode" }) {
-	if (icon === "json") return <span className="tool-glyph-json">&#123; &#125;</span>;
+	if (icon === "json")
+		return <span className="tool-glyph-json">&#123; &#125;</span>;
 	return (
 		<svg viewBox="0 0 24 24" aria-hidden="true">
 			<path d="M4 4v16M7 4v16m4-16v16m2-16v16m4-16v16m3-16v16" />
@@ -26,7 +27,9 @@ export default function App() {
 	const [themePreference, setThemePreference] =
 		useState<ThemePreference>(readThemePreference);
 	const [systemTheme, setSystemTheme] = useState<Theme>(() =>
-		window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light",
+		window.matchMedia("(prefers-color-scheme: dark)").matches
+			? "dark"
+			: "light",
 	);
 	const theme = themePreference === "system" ? systemTheme : themePreference;
 	const themeLabel =
@@ -61,99 +64,108 @@ export default function App() {
 
 	const openTool = (toolId: ToolId) => {
 		setActiveTool(toolId);
-		setVisitedTools((visited) => visited.includes(toolId) ? visited : [...visited, toolId]);
+		setVisitedTools((visited) =>
+			visited.includes(toolId) ? visited : [...visited, toolId],
+		);
 	};
 
 	return (
 		<ThemeContext.Provider value={theme}>
-		<div className="app-shell">
-			<header className="topbar">
-				<div className="brand">
-					<div className="mark">&#123; &#125;</div>
-					<div className="brand-text">
-						<h1>DevKit</h1>
-						<p>LOCAL DEVELOPER TOOLS</p>
-					</div>
-				</div>
-				<div className="header-actions">
-					<div className="badge">
-						<span className="dot" />
-						本地运行 · 数据不上传
-					</div>
-					<button
-						className="theme-toggle"
-						type="button"
-						aria-label={`切换主题，当前为${themeLabel}`}
-						title={`主题：${themeLabel}（点击切换）`}
-						onClick={cycleTheme}
-					>
-						{theme === "dark" ? (
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z" />
-							</svg>
-						) : (
-							<svg viewBox="0 0 24 24" aria-hidden="true">
-								<circle cx="12" cy="12" r="4" />
-								<path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
-							</svg>
-						)}
-					</button>
-				</div>
-			</header>
-
-			<div className="app-layout">
-				<aside className="tool-sidebar" aria-label="工具导航">
-					<p className="sidebar-label">工具箱</p>
-					<nav className="tool-nav">
-						{toolRegistry.map((tool) => (
-							<button
-								key={tool.id}
-								className={`tool-nav-item ${activeTool === tool.id ? "active" : ""}`}
-								aria-current={activeTool === tool.id ? "page" : undefined}
-								type="button"
-								onClick={() => openTool(tool.id)}
-							>
-								<span className="tool-nav-icon"><ToolIcon icon={tool.icon} /></span>
-								<span className="tool-nav-copy">
-									<strong>{tool.name}</strong>
-									<small>{tool.description}</small>
-								</span>
-							</button>
-						))}
-					</nav>
-					<div className="sidebar-note">
-						<span className="sidebar-note-mark">✳</span>
-						<span>更多实用工具<br />持续加入</span>
-					</div>
-				</aside>
-
-				<main className="tool-main">
-					<div className="tool-heading">
-						<div>
-							<p className="tool-breadcrumb">DEVKIT <span>/</span> {activeDefinition.name}</p>
-							<h2>{activeDefinition.name}</h2>
-							<p>{activeDefinition.description}</p>
-						</div>
-						<span className="local-pill"><i /> 浏览器本地处理</span>
-					</div>
-					{toolRegistry.filter((tool) => visitedTools.includes(tool.id)).map((tool) => {
-						const Tool = tool.component;
-						return (
-							<div className="tool-instance" hidden={tool.id !== activeTool} key={tool.id}>
-								<Suspense fallback={<div className="tool-loading">正在加载工具…</div>}>
-									<Tool />
-								</Suspense>
+			<div className="app-shell">
+				<div className="app-layout">
+					<aside className="tool-sidebar" aria-label="工具导航">
+						<div className="brand">
+							<div className="mark">&#123; &#125;</div>
+							<div className="brand-text">
+								<h1>DevKit</h1>
+								<p>LOCAL DEVELOPER TOOLS</p>
 							</div>
-						);
-					})}
-				</main>
-			</div>
+						</div>
+						<p className="sidebar-label">工具箱</p>
+						<nav className="tool-nav">
+							{toolRegistry.map((tool) => (
+								<button
+									key={tool.id}
+									className={`tool-nav-item ${activeTool === tool.id ? "active" : ""}`}
+									aria-current={activeTool === tool.id ? "page" : undefined}
+									type="button"
+									onClick={() => openTool(tool.id)}
+								>
+									<span className="tool-nav-icon">
+										<ToolIcon icon={tool.icon} />
+									</span>
+									<span className="tool-nav-copy">
+										<strong>{tool.name}</strong>
+										<small>{tool.description}</small>
+									</span>
+								</button>
+							))}
+						</nav>
+						<div className="sidebar-note">
+							<span className="sidebar-note-mark">✳</span>
+							<span>
+								更多实用工具
+								<br />
+								持续加入
+							</span>
+						</div>
+					</aside>
 
-			<footer className="app-footer">
-				<span>DevKit <span className="footer-separator">·</span> 你的本地开发工作台</span>
-				<span>数据始终保留在此设备</span>
-			</footer>
-		</div>
+					<main className="tool-main">
+						<header className="main-toolbar">
+							<div className="tool-heading">
+								<div>
+									<p className="tool-breadcrumb">
+										DEVKIT <span>/</span> {activeDefinition.name}
+									</p>
+									<h2>{activeDefinition.name}</h2>
+									<p>{activeDefinition.description}</p>
+								</div>
+							</div>
+							<div className="header-actions">
+								<button
+									className="theme-toggle"
+									type="button"
+									aria-label={`切换主题，当前为${themeLabel}`}
+									title={`主题：${themeLabel}（点击切换）`}
+									onClick={cycleTheme}
+								>
+									{theme === "dark" ? (
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z" />
+										</svg>
+									) : (
+										<svg viewBox="0 0 24 24" aria-hidden="true">
+											<circle cx="12" cy="12" r="4" />
+											<path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+										</svg>
+									)}
+								</button>
+							</div>
+						</header>
+						{toolRegistry
+							.filter((tool) => visitedTools.includes(tool.id))
+							.map((tool) => {
+								const Tool = tool.component;
+								return (
+									<div
+										className="tool-instance"
+										hidden={tool.id !== activeTool}
+										key={tool.id}
+									>
+										<Suspense
+											fallback={
+												<div className="tool-loading">正在加载工具…</div>
+											}
+										>
+											<Tool />
+										</Suspense>
+									</div>
+								);
+							})}
+					</main>
+				</div>
+			</div>
 		</ThemeContext.Provider>
 	);
 }
