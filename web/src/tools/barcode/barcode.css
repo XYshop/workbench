@@ -1,609 +1,830 @@
 .barcode-tool {
-	flex: 1;
-	min-height: 0;
-	display: grid;
-	grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
-	gap: 13px;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+  gap: 13px;
 }
 
 .barcode-editor,
 .barcode-preview-panel {
-	min-height: 0;
+  min-height: 0;
 }
 
 .barcode-form {
-	min-height: 0;
-	overflow: auto;
-	padding: 16px;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
 }
 
 .barcode-field,
 .barcode-format-field,
 .range-field {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .barcode-field-heading,
 .range-title {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 10px;
-	color: var(--text);
-	font-size: 12px;
-	font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .text-action {
-	padding: 0;
-	border: 0;
-	background: none;
-	color: var(--accent);
-	font-size: 11px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 11px;
 }
 
 .text-action.success {
-	color: var(--accent);
+  color: var(--accent);
 }
 
 .text-action.error {
-	color: var(--danger);
+  color: var(--danger);
 }
 
 .text-action:disabled {
-	opacity: 0.4;
-	cursor: not-allowed;
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .barcode-input {
-	flex: none;
-	width: 100%;
-	min-height: 100px;
-	max-height: 200px;
-	padding: 11px 12px;
-	border: 1px solid var(--border);
-	border-radius: 9px;
-	outline: 0;
-	resize: vertical;
-	background: var(--control-bg);
-	color: var(--input-text);
-	font-family: var(--mono);
-	font-size: 12px;
-	line-height: 1.6;
+  flex: none;
+  width: 100%;
+  min-height: 100px;
+  max-height: 200px;
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: 0;
+  resize: vertical;
+  background: var(--control-bg);
+  color: var(--input-text);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .barcode-input:focus {
-	border-color: var(--accent);
-	box-shadow: 0 0 0 3px var(--accent-dim);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
 }
 
 .barcode-input::placeholder {
-	color: var(--dim);
+  color: var(--dim);
 }
 
 .barcode-format-field {
-	min-width: 0;
-	margin: 20px 0 0;
-	padding: 0;
-	border: 0;
+  min-width: 0;
+  margin: 20px 0 0;
+  padding: 0;
+  border: 0;
 }
 
 .barcode-format-field legend {
-	margin-bottom: 8px;
-	color: var(--text);
-	font-size: 12px;
-	font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .barcode-format-options {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .barcode-format-card {
-	min-width: 0;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	padding: 10px;
-	border: 1px solid var(--border);
-	border-radius: 9px;
-	background: var(--panel-2);
-	color: var(--text);
-	text-align: left;
-	transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--panel-2);
+  color: var(--text);
+  text-align: left;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .barcode-format-card:hover {
-	border-color: var(--border-strong);
+  border-color: var(--border-strong);
 }
 
 .barcode-format-card.selected {
-	border-color: var(--accent);
-	background: var(--accent-dim);
-	box-shadow: 0 0 0 2px var(--accent-dim);
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  box-shadow: 0 0 0 2px var(--accent-dim);
 }
 
 .barcode-format-card strong,
 .barcode-format-card small {
-	display: block;
+  display: block;
 }
 
 .barcode-format-card strong {
-	font-size: 11.5px;
+  font-size: 11.5px;
 }
 
 .barcode-format-card small {
-	margin-top: 3px;
-	color: var(--muted);
-	font-size: 10px;
-	font-weight: 400;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
 }
 
 .format-symbol {
-	width: 31px;
-	height: 31px;
-	flex: none;
-	display: grid;
-	place-items: center;
-	gap: 2px;
-	border-radius: 7px;
-	background: var(--control-bg);
+  width: 31px;
+  height: 31px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  border-radius: 7px;
+  background: var(--control-bg);
 }
 
 .format-symbol-qr {
-	grid-template-columns: repeat(3, 6px);
-	grid-template-rows: repeat(3, 6px);
+  grid-template-columns: repeat(3, 6px);
+  grid-template-rows: repeat(3, 6px);
 }
 
 .format-symbol-qr i {
-	width: 6px;
-	height: 6px;
-	background: var(--text);
+  width: 6px;
+  height: 6px;
+  background: var(--text);
 }
 
 .format-symbol-qr i:nth-child(2),
 .format-symbol-qr i:nth-child(4),
 .format-symbol-qr i:nth-child(6),
 .format-symbol-qr i:nth-child(8) {
-	background: var(--dim);
+  background: var(--dim);
 }
 
 .format-symbol-linear {
-	display: flex;
-	justify-content: center;
-	gap: 2px;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
 }
 
 .format-symbol-linear i {
-	width: 2px;
-	height: 18px;
-	background: var(--text);
+  width: 2px;
+  height: 18px;
+  background: var(--text);
 }
 
 .format-symbol-linear i:nth-child(2n) {
-	width: 1px;
+  width: 1px;
 }
 
 .barcode-settings {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 16px;
-	margin-top: 20px;
-	padding-top: 17px;
-	border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid var(--border);
 }
 
 .range-title output {
-	color: var(--accent);
-	font-family: var(--mono);
-	font-size: 11px;
-	font-weight: 500;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
 }
 
 .range-field input[type="range"] {
-	width: 100%;
-	accent-color: var(--accent);
+  width: 100%;
+  accent-color: var(--accent);
 }
 
 .range-field small {
-	color: var(--dim);
-	font-size: 10px;
-	font-weight: 400;
+  color: var(--dim);
+  font-size: 10px;
+  font-weight: 400;
 }
 
 .barcode-colors {
-	display: flex;
-	gap: 18px;
-	margin-top: 18px;
-	padding-top: 15px;
-	border-top: 1px solid var(--border);
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border);
 }
 
 .color-field {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }
 
 .color-swatch {
-	width: 30px;
-	height: 30px;
-	position: relative;
-	overflow: hidden;
-	border: 1px solid var(--border-strong);
-	border-radius: 8px;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
 }
 
 .color-swatch input {
-	position: absolute;
-	width: 42px;
-	height: 42px;
-	left: -6px;
-	top: -6px;
-	padding: 0;
-	border: 0;
-	opacity: 0;
-	cursor: pointer;
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  left: -6px;
+  top: -6px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .color-field strong,
 .color-field small {
-	display: block;
+  display: block;
 }
 
 .color-field strong {
-	color: var(--text);
-	font-size: 10.5px;
+  color: var(--text);
+  font-size: 10.5px;
 }
 
 .color-field small {
-	margin-top: 2px;
-	color: var(--muted);
-	font-family: var(--mono);
-	font-size: 9px;
+  margin-top: 2px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
 }
 
 .preview-live {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	color: var(--muted);
-	font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 10px;
 }
 
 .preview-live i,
 .local-pill i {
-	width: 6px;
-	height: 6px;
-	display: inline-block;
-	border-radius: 50%;
-	background: var(--accent);
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
 .barcode-preview-content {
-	flex: 1;
-	min-height: 0;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-	padding: 18px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
 }
 
 .barcode-artboard {
-	flex: 1;
-	min-width: 0;
-	min-height: 240px;
-	display: grid;
-	place-items: center;
-	overflow: hidden;
-	padding: 24px;
-	border: 1px solid var(--barcode-checker-border);
-	border-radius: 10px;
-	background-color: var(--barcode-checker-bg);
-	background-image: linear-gradient(45deg, var(--barcode-checker-tile) 25%, transparent 25%), linear-gradient(-45deg, var(--barcode-checker-tile) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--barcode-checker-tile) 75%), linear-gradient(-45deg, transparent 75%, var(--barcode-checker-tile) 75%);
-	background-size: 18px 18px;
-	background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+  flex: 1;
+  min-width: 0;
+  min-height: 240px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid var(--barcode-checker-border);
+  border-radius: 10px;
+  background-color: var(--barcode-checker-bg);
+  background-image:
+    linear-gradient(45deg, var(--barcode-checker-tile) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--barcode-checker-tile) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--barcode-checker-tile) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--barcode-checker-tile) 75%);
+  background-size: 18px 18px;
+  background-position:
+    0 0,
+    0 9px,
+    9px -9px,
+    -9px 0;
 }
 
 .barcode-artboard img {
-	display: block;
-	object-fit: contain;
+  display: block;
+  object-fit: contain;
 }
 
 .qr-artboard img {
-	width: min(100%, 320px);
-	height: min(100%, 320px);
+  width: min(100%, 320px);
+  height: min(100%, 320px);
 }
 
 .linear-artboard img {
-	width: min(100%, 620px);
-	height: min(100%, 240px);
+  width: min(100%, 620px);
+  height: min(100%, 240px);
 }
 
 .barcode-empty {
-	color: #8994a2;
-	text-align: center;
+  color: #8994a2;
+  text-align: center;
 }
 
 .barcode-empty span {
-	width: 42px;
-	height: 42px;
-	display: grid;
-	place-items: center;
-	margin: 0 auto 10px;
-	border-radius: 12px;
-	background: #f0f3f7;
-	color: #68768a;
-	font-size: 20px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 10px;
+  border-radius: 12px;
+  background: #f0f3f7;
+  color: #68768a;
+  font-size: 20px;
 }
 
 .barcode-empty p {
-	margin: 0;
-	font-size: 11px;
+  margin: 0;
+  font-size: 11px;
 }
 
 .barcode-error {
-	margin: 10px 0 0;
-	color: var(--danger);
-	font-size: 11px;
-	line-height: 1.5;
+  margin: 10px 0 0;
+  color: var(--danger);
+  font-size: 11px;
+  line-height: 1.5;
 }
 
 .barcode-preview-caption {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 10px;
-	margin-top: 12px;
-	color: var(--muted);
-	font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 10px;
 }
 
 .format-badge {
-	padding: 4px 7px;
-	border-radius: 5px;
-	background: var(--accent-dim);
-	color: var(--accent);
-	font-family: var(--mono);
-	font-size: 9px;
-	letter-spacing: 0.04em;
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
 }
 
 .barcode-export-bar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 12px;
-	padding: 13px 15px;
-	border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  border-top: 1px solid var(--border);
 }
 
 .barcode-export-bar strong,
 .barcode-export-bar small {
-	display: block;
+  display: block;
 }
 
 .barcode-export-bar strong {
-	color: var(--text);
-	font-size: 11px;
+  color: var(--text);
+  font-size: 11px;
 }
 
 .barcode-export-bar small {
-	margin-top: 3px;
-	color: var(--dim);
-	font-size: 9.5px;
+  margin-top: 3px;
+  color: var(--dim);
+  font-size: 9.5px;
 }
 
 .barcode-export-actions {
-	display: flex;
-	gap: 6px;
+  display: flex;
+  gap: 6px;
 }
 
-
 @media (max-width: 980px) {
-	.barcode-tool {
-		grid-template-columns: minmax(0, 1fr);
-		min-height: auto;
-	}
+  .barcode-tool {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+  }
 
-	.barcode-editor {
-		min-height: 440px;
-	}
+  .barcode-editor {
+    min-height: 440px;
+  }
 
-	.barcode-preview-panel {
-		min-height: 500px;
-	}
+  .barcode-preview-panel {
+    min-height: 500px;
+  }
 }
 
 @media (max-width: 560px) {
-	.barcode-form {
-		padding: 13px;
-	}
+  .barcode-form {
+    padding: 13px;
+  }
 
-	.barcode-format-options,
-	.barcode-settings {
-		grid-template-columns: minmax(0, 1fr);
-	}
+  .barcode-format-options,
+  .barcode-settings {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-	.barcode-settings {
-		gap: 14px;
-	}
+  .barcode-settings {
+    gap: 14px;
+  }
 
-	.barcode-preview-content {
-		padding: 12px;
-	}
+  .barcode-preview-content {
+    padding: 12px;
+  }
 
-	.barcode-artboard {
-		min-height: 220px;
-		padding: 12px;
-	}
+  .barcode-artboard {
+    min-height: 220px;
+    padding: 12px;
+  }
 
-	.barcode-export-bar {
-		align-items: flex-start;
-		flex-direction: column;
-	}
+  .barcode-export-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
-	.barcode-export-actions {
-		width: 100%;
-	}
+  .barcode-export-actions {
+    width: 100%;
+  }
 
-	.barcode-export-actions button {
-		flex: 1;
-	}
+  .barcode-export-actions button {
+    flex: 1;
+  }
 }
 
 /* Playful Retro-Brutalist editorial details */
-.barcode-tool { gap: 17px; }
-.barcode-editor { background: var(--panel); }
-.barcode-form { padding: 18px; }
+.barcode-tool {
+  gap: 17px;
+}
+.barcode-editor {
+  background: var(--panel);
+}
+.barcode-form {
+  padding: 18px;
+}
 .barcode-field-heading,
 .range-title,
-.barcode-format-field legend { font-family: var(--mono); font-size: 11px; font-weight: 700; }
+.barcode-format-field legend {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+}
 .barcode-input {
-	border: 2px solid var(--ink);
-	border-radius: 5px;
-	background: var(--control-bg);
-	box-shadow: 3px 3px 0 var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 5px;
+  background: var(--control-bg);
+  box-shadow: 3px 3px 0 var(--ink);
 }
-.barcode-input:focus { border-color: var(--blue); box-shadow: 3px 3px 0 var(--blue); }
-.text-action { font-family: var(--mono); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.text-action.success { color: var(--blue); }
+.barcode-input:focus {
+  border-color: var(--blue);
+  box-shadow: 3px 3px 0 var(--blue);
+}
+.text-action {
+  font-family: var(--mono);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.text-action.success {
+  color: var(--blue);
+}
 .barcode-format-card {
-	border: 2px solid var(--ink);
-	border-radius: 5px;
-	background: var(--panel-2);
-	box-shadow: 3px 3px 0 var(--ink);
-	transition: transform 90ms ease, box-shadow 90ms ease, background 90ms ease;
+  border: 2px solid var(--ink);
+  border-radius: 5px;
+  background: var(--panel-2);
+  box-shadow: 3px 3px 0 var(--ink);
+  transition:
+    transform 90ms ease,
+    box-shadow 90ms ease,
+    background 90ms ease;
 }
-.barcode-format-card:hover { border-color: var(--ink); transform: translate(-1px, -1px); }
+.barcode-format-card:hover {
+  border-color: var(--ink);
+  transform: translate(-1px, -1px);
+}
 .barcode-format-card.selected {
-	border-color: var(--ink);
-	background: var(--yellow);
-	color: var(--ink);
-	box-shadow: 4px 4px 0 var(--ink);
+  border-color: var(--ink);
+  background: var(--yellow);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
 }
-.barcode-format-card.selected small { color: #4c443c; }
-.format-symbol { border: 1.5px solid var(--ink); border-radius: 3px; background: var(--paper); }
-.format-symbol-qr i { background: var(--blue); }
+.barcode-format-card.selected small {
+  color: #4c443c;
+}
+.format-symbol {
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: var(--paper);
+}
+.format-symbol-qr i {
+  background: var(--blue);
+}
 .format-symbol-qr i:nth-child(2),
 .format-symbol-qr i:nth-child(4),
 .format-symbol-qr i:nth-child(6),
-.format-symbol-qr i:nth-child(8) { background: var(--pink); }
-.format-symbol-linear i { background: var(--blue); }
-.barcode-settings,
-.barcode-colors { border-color: var(--ink); border-top-width: 2px; }
-.range-title output { color: var(--blue); font-weight: 700; }
-.range-field input[type="range"] { accent-color: var(--pink); }
-.color-swatch { border: 2px solid var(--ink); border-radius: 4px; box-shadow: 2px 2px 0 var(--ink); }
-.color-field strong { font-family: var(--mono); }
-.color-field small { font-weight: 700; }
-.barcode-preview-content { padding: 17px; }
-.barcode-artboard {
-	border-width: 2px;
-	border-radius: 5px;
-	box-shadow: inset 0 0 0 1px rgba(22, 18, 27, 0.08);
+.format-symbol-qr i:nth-child(8) {
+  background: var(--pink);
 }
-.barcode-empty span { border: 2px solid var(--ink); border-radius: 4px; background: var(--yellow); color: var(--ink); }
-.format-badge { border: 1.5px solid var(--ink); border-radius: 3px; background: var(--pink); color: var(--ink); font-weight: 700; }
-.barcode-export-bar { border-top: 2px solid var(--ink); }
-.barcode-export-bar strong { font-family: Impact, "Arial Black", sans-serif; font-size: 14px; text-transform: uppercase; }
-.barcode-export-bar small { font-family: var(--mono); }
+.format-symbol-linear i {
+  background: var(--blue);
+}
+.barcode-settings,
+.barcode-colors {
+  border-color: var(--ink);
+  border-top-width: 2px;
+}
+.range-title output {
+  color: var(--blue);
+  font-weight: 700;
+}
+.range-field input[type="range"] {
+  accent-color: var(--pink);
+}
+.color-swatch {
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.color-field strong {
+  font-family: var(--mono);
+}
+.color-field small {
+  font-weight: 700;
+}
+.barcode-preview-content {
+  padding: 17px;
+}
+.barcode-artboard {
+  border-width: 2px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px rgba(22, 18, 27, 0.08);
+}
+.barcode-empty span {
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  background: var(--yellow);
+  color: var(--ink);
+}
+.format-badge {
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  background: var(--pink);
+  color: var(--ink);
+  font-weight: 700;
+}
+.barcode-export-bar {
+  border-top: 2px solid var(--ink);
+}
+.barcode-export-bar strong {
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.barcode-export-bar small {
+  font-family: var(--mono);
+}
 
 @media (max-width: 980px) {
-	.barcode-tool { gap: 16px; }
-	.barcode-editor { min-height: 440px; }
-	.barcode-preview-panel { min-height: 500px; }
+  .barcode-tool {
+    gap: 16px;
+  }
+  .barcode-editor {
+    min-height: 440px;
+  }
+  .barcode-preview-panel {
+    min-height: 500px;
+  }
 }
 
 /* Keep the code itself centered independently of the preview height. */
 .barcode-artboard {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr);
-	grid-template-rows: minmax(0, 1fr);
-	place-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
 }
 .qr-artboard img {
-	width: min(100%, 320px);
-	height: min(100%, 320px);
-	max-width: 100%;
-	max-height: 100%;
-	aspect-ratio: 1 / 1;
-	object-fit: contain;
-	place-self: center;
-	margin: auto;
+  width: min(100%, 320px);
+  height: min(100%, 320px);
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  place-self: center;
+  margin: auto;
 }
 
 /* Keep the retro palette restrained inside the barcode workspace. */
-.barcode-form { padding: 16px; }
+.barcode-form {
+  padding: 16px;
+}
 .barcode-field-heading,
 .range-title,
-.barcode-format-field legend { font-family: var(--sans); font-size: 11px; font-weight: 600; }
-.barcode-input { border: 1px solid var(--border-strong); border-radius: 6px; box-shadow: none; }
-.barcode-input:focus { border-color: var(--blue); box-shadow: 0 0 0 2px rgba(48, 65, 187, 0.13); }
+.barcode-format-field legend {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+}
+.barcode-input {
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  box-shadow: none;
+}
+.barcode-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 2px rgba(48, 65, 187, 0.13);
+}
 .barcode-format-card {
-	border: 1px solid var(--border);
-	border-radius: 7px;
-	background: var(--panel-2);
-	box-shadow: none;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--panel-2);
+  box-shadow: none;
 }
-.barcode-format-card:hover { border-color: var(--border-strong); transform: none; }
+.barcode-format-card:hover {
+  border-color: var(--border-strong);
+  transform: none;
+}
 .barcode-format-card.selected {
-	border-color: var(--tab-border);
-	background: var(--tab-active);
-	color: var(--text);
-	box-shadow: inset 0 0 0 1px var(--tab-border);
+  border-color: var(--tab-border);
+  background: var(--tab-active);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--tab-border);
 }
-.barcode-format-card.selected small { color: var(--muted); }
-.format-symbol { border: 1px solid var(--border); border-radius: 5px; }
-.format-symbol-qr i { background: var(--blue); }
+.barcode-format-card.selected small {
+  color: var(--muted);
+}
+.format-symbol {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+.format-symbol-qr i {
+  background: var(--blue);
+}
 .format-symbol-qr i:nth-child(2),
 .format-symbol-qr i:nth-child(4),
 .format-symbol-qr i:nth-child(6),
-.format-symbol-qr i:nth-child(8) { background: var(--accent); }
-.format-symbol-linear i { background: var(--blue); }
+.format-symbol-qr i:nth-child(8) {
+  background: var(--accent);
+}
+.format-symbol-linear i {
+  background: var(--blue);
+}
 .barcode-settings,
-.barcode-colors { border-color: var(--border); border-top-width: 1px; }
-.range-title output { color: var(--blue); }
-.range-field input[type="range"] { accent-color: var(--accent); }
-.color-swatch { border: 1px solid var(--border); border-radius: 5px; box-shadow: 1px 1px 0 rgba(33, 29, 37, 0.12); }
-.barcode-artboard { border-width: 1px; border-radius: 7px; box-shadow: none; }
-.barcode-empty span { border: 1px solid var(--border); border-radius: 6px; background: var(--panel-2); color: var(--blue); }
-.format-badge { border: 0; border-radius: 4px; background: var(--accent-dim); color: var(--accent); }
-.barcode-export-bar { border-top: 1px solid var(--border); }
-.barcode-export-bar strong { font-family: var(--sans); font-size: 12px; text-transform: none; }
-.barcode-tool { gap: 15px; }
-.barcode-form { padding: 16px; }
+.barcode-colors {
+  border-color: var(--border);
+  border-top-width: 1px;
+}
+.range-title output {
+  color: var(--blue);
+}
+.range-field input[type="range"] {
+  accent-color: var(--accent);
+}
+.color-swatch {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  box-shadow: 1px 1px 0 rgba(33, 29, 37, 0.12);
+}
+.barcode-artboard {
+  border-width: 1px;
+  border-radius: 7px;
+  box-shadow: none;
+}
+.barcode-empty span {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-2);
+  color: var(--blue);
+}
+.format-badge {
+  border: 0;
+  border-radius: 4px;
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+.barcode-export-bar {
+  border-top: 1px solid var(--border);
+}
+.barcode-export-bar strong {
+  font-family: var(--sans);
+  font-size: 12px;
+  text-transform: none;
+}
+.barcode-tool {
+  gap: 15px;
+}
+.barcode-form {
+  padding: 16px;
+}
 .barcode-field-heading,
 .range-title,
-.barcode-format-field legend { font-family: var(--sans); font-size: 11px; font-weight: 600; }
-.text-action { color: var(--accent); font-family: var(--sans); font-weight: 500; text-decoration: none; }
-.text-action.success { color: var(--green); }
-.barcode-input { border-color: var(--border); border-radius: 7px; background: var(--control-bg); box-shadow: none; }
-.barcode-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
-.barcode-format-card { border-color: var(--border); border-radius: 8px; background: var(--panel-2); box-shadow: none; }
-.barcode-format-card:hover { border-color: var(--border-strong); transform: none; }
-.barcode-format-card.selected { border-color: var(--tab-border); background: var(--tab-active); color: var(--text); box-shadow: inset 0 0 0 1px var(--tab-border); }
-.barcode-format-card.selected small { color: var(--muted); }
+.barcode-format-field legend {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+}
+.text-action {
+  color: var(--accent);
+  font-family: var(--sans);
+  font-weight: 500;
+  text-decoration: none;
+}
+.text-action.success {
+  color: var(--green);
+}
+.barcode-input {
+  border-color: var(--border);
+  border-radius: 7px;
+  background: var(--control-bg);
+  box-shadow: none;
+}
+.barcode-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.barcode-format-card {
+  border-color: var(--border);
+  border-radius: 8px;
+  background: var(--panel-2);
+  box-shadow: none;
+}
+.barcode-format-card:hover {
+  border-color: var(--border-strong);
+  transform: none;
+}
+.barcode-format-card.selected {
+  border-color: var(--tab-border);
+  background: var(--tab-active);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--tab-border);
+}
+.barcode-format-card.selected small {
+  color: var(--muted);
+}
 .format-symbol,
-.color-swatch { border-color: var(--border); border-radius: 7px; box-shadow: none; }
-.format-symbol { background: var(--panel); }
+.color-swatch {
+  border-color: var(--border);
+  border-radius: 7px;
+  box-shadow: none;
+}
+.format-symbol {
+  background: var(--panel);
+}
 .format-symbol-qr i,
-.format-symbol-linear i { background: var(--accent); }
+.format-symbol-linear i {
+  background: var(--accent);
+}
 .format-symbol-qr i:nth-child(2),
 .format-symbol-qr i:nth-child(4),
 .format-symbol-qr i:nth-child(6),
-.format-symbol-qr i:nth-child(8) { background: var(--blue); }
+.format-symbol-qr i:nth-child(8) {
+  background: var(--blue);
+}
 .barcode-settings,
-.barcode-colors { border-color: var(--border); border-top-width: 1px; }
-.range-title output { color: var(--accent); }
-.range-field input[type="range"] { accent-color: var(--accent); }
-.barcode-artboard { border-color: var(--barcode-checker-border); border-radius: 9px; }
-.format-badge { border: 0; border-radius: 999px; background: var(--accent-dim); color: var(--accent); }
-.barcode-export-bar { border-top-width: 1px; }
-.barcode-export-bar strong { font-family: var(--sans); font-size: 12px; font-weight: 600; text-transform: none; }
-.barcode-export-bar small { font-family: var(--sans); }
+.barcode-colors {
+  border-color: var(--border);
+  border-top-width: 1px;
+}
+.range-title output {
+  color: var(--accent);
+}
+.range-field input[type="range"] {
+  accent-color: var(--accent);
+}
+.barcode-artboard {
+  border-color: var(--barcode-checker-border);
+  border-radius: 9px;
+}
+.format-badge {
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+.barcode-export-bar {
+  border-top-width: 1px;
+}
+.barcode-export-bar strong {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: none;
+}
+.barcode-export-bar small {
+  font-family: var(--sans);
+}
