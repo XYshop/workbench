@@ -1,12 +1,12 @@
 {
-  "name": "json2obj",
-  "version": "0.1.0",
-  "private": true,
-  "description": "Local-first JSON to TypeScript / Zod converter powered by Rust + WebAssembly",
-  "scripts": {
-    "dev": "pnpm --dir web dev",
-    "wasm": "pnpm --dir web wasm",
-    "build": "pnpm --dir web build",
-    "test": "cargo test -p json2obj-core"
-  }
+	"name": "workbench",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Workbench",
+	"scripts": {
+		"dev": "pnpm --dir web dev",
+		"wasm": "pnpm --dir web wasm",
+		"build": "pnpm --dir web build",
+		"test": "cargo test -p json2obj-core"
+	}
 }
