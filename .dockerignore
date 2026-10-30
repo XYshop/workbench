@@ -1,0 +1,10 @@
+.git
+node_modules
+web/node_modules
+web/dist
+web/dist-root
+target
+docs
+*.png
+*.log
+.DS_Store

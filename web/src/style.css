@@ -2566,7 +2566,7 @@ button:active:not(:disabled) {
 
 /* Theme-aware colors for generated JSON and code. */
 :root[data-theme="light"] {
-  --code-surface: #f5f7fa;
+  --code-surface: #ffffff;
   --code-text: #293445;
   --tok-keyword: #a93845;
   --tok-string: #17688f;

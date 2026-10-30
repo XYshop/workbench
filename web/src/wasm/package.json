@@ -1,0 +1,17 @@
+{
+  "name": "json2obj-wasm",
+  "type": "module",
+  "description": "WASM bindings for json2obj",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "json2obj_wasm_bg.wasm",
+    "json2obj_wasm.js",
+    "json2obj_wasm.d.ts"
+  ],
+  "main": "json2obj_wasm.js",
+  "types": "json2obj_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
